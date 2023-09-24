@@ -2,6 +2,7 @@ from rest_framework import serializers
 
 from .models import Animal
 
+
 class AnimalSerializer(serializers.ModelSerializer):
     class Meta:
         model = Animal
@@ -11,10 +12,11 @@ class AnimalSerializer(serializers.ModelSerializer):
             'age'
         ]
 
+
 class ListAnimalSerializer(serializers.ModelSerializer):
-    
+
     data = serializers.SerializerMethodField()
-    
+
     def get_data(self, obj):
         user = None
         request = self.context.get("request")
@@ -24,6 +26,7 @@ class ListAnimalSerializer(serializers.ModelSerializer):
                 return {"name": obj.name,
                         "age": obj.age}
         return "Age and name unknown"
+
     class Meta:
         model = Animal
         fields = [

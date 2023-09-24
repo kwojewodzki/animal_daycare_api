@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+import os
+from dotenv import load_dotenv
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -40,7 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'drf_yasg',
-    ## my apps
+    # my apps
     'animal',
 ]
 
@@ -78,8 +80,6 @@ WSGI_APPLICATION = 'daycare.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-from dotenv import load_dotenv
-import os
 load_dotenv()
 
 DATABASES = {
@@ -135,10 +135,10 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 auth_classes = [
-        "rest_framework.authentication.TokenAuthentication",
-        "rest_framework.authentication.SessionAuthentication"]
+    "rest_framework.authentication.TokenAuthentication",
+    "rest_framework.authentication.SessionAuthentication"]
 
-REST_FRAMEWORK ={
+REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": auth_classes,
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.IsAuthenticatedOrReadOnly"],
